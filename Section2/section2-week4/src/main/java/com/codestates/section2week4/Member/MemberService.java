@@ -1,7 +1,12 @@
 package com.codestates.section2week4.Member;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemberRepository();
+    //private final MemberRepository memberRepository = new MemberRepository();
+
+    private final MemberRepository memberRepository;
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     public void createMember(Member member){
         memberRepository.postMember(member);
