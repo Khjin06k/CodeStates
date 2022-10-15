@@ -1,7 +1,9 @@
 package com.codestates.section2week4.Member;
 
-import java.util.*;
+import org.springframework.stereotype.Component;
 
+import java.util.*;
+@Component
 public class MemberRepository {
     private static Map<Long, Member> members = new HashMap<>();
 

@@ -1,7 +1,9 @@
 package com.codestates.section2week4.Coffee;
 
-import java.util.*;
+import org.springframework.stereotype.Component;
 
+import java.util.*;
+@Component
 public class CoffeeRepository {
     private static Map<Long, Coffee> drinks = new HashMap<>();
 
