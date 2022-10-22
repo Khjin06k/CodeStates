@@ -12,7 +12,7 @@ public class CoffeePostDto {
     @Pattern(regexp = "^[a-zA-Z]+(\\s?[a-zA-Z]+)*$")
     private String engName;
     @Range(min=100, max = 50000)
-    private int price;
+    private Integer price;
 
 
     public String getKorName() {
@@ -23,7 +23,7 @@ public class CoffeePostDto {
         return engName;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 }

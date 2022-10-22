@@ -1,5 +1,6 @@
 package com.codestates.coffee;
 
+import com.codestates.member.NotSpace;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.*;
@@ -7,12 +8,12 @@ import javax.validation.constraints.*;
 public class CoffeePatchDto {
     //@Positive
     private long coffeeId;
-    @NotBlank
+    @NotSpace
     private String korName;
     @Pattern(regexp = "^[a-zA-Z]+(\\s?[a-zA-Z]+)*$")
     private String engName;
     @Range(min=100, max=50000)
-    private int price;
+    private Integer price;
 
     public long getCoffeeId() {
         return coffeeId;
@@ -38,11 +39,11 @@ public class CoffeePatchDto {
         this.engName = engName;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price){
+    public void setPrice(Integer price){
         this.price = price;
     }
 }
