@@ -1,5 +1,6 @@
 package com.codestates.member;
 
+import com.codestates.member.entity.Member;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
