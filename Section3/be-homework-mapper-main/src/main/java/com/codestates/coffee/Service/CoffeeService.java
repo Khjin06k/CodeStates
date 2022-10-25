@@ -1,8 +1,11 @@
 package com.codestates.coffee.Service;
 
 import com.codestates.coffee.entity.Coffee;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 
+@Service
 public class CoffeeService {
 
     public Coffee createCoffee(Coffee coffee){
