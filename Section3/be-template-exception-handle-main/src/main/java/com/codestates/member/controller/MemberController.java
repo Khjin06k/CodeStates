@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * - Mapstruct Mapper 적용
  */
 @RestController
-@RequestMapping("/v7/members")
+@RequestMapping("/v8/members")
 @Validated
 @Slf4j
 public class MemberController {
@@ -88,7 +88,7 @@ public class MemberController {
     //예외가 발생할 경우 MethodArgumentNotValidException이 발생
     //MemberController에 @ExceptionHandler 애너테이션이 추가된 예외 처리 메서드인 handleException()이 있기
     // 때문에 유효성 검증 과정에서 내부적으로 던져진 MethodArgumentNotValidException를 handleException 메서드가 전달 받음
-    @ExceptionHandler
+    /*@ExceptionHandler
     public ResponseEntity handleException(MethodArgumentNotValidException e){
 
         //(1)MethodArgumentNotValidException 객체에서 getBindingResult().getFieldErrors()를 통해 발생한 에러 정보를 확인할 수 있음
@@ -112,5 +112,5 @@ public class MemberController {
     @ExceptionHandler
     public ResponseEntity handleException(ConstraintViolationException e){
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
+    }*/
 }
