@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/v8/coffees")
@@ -54,8 +53,8 @@ public class CoffeeController {
     @GetMapping
     public ResponseEntity getCoffees() {
         List<Coffee> coffees = coffeeService.findCoffees();
-
         List<CoffeeResponseDto> response = mapper.coffeesToCoffeeResponseDtos(coffees);
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
