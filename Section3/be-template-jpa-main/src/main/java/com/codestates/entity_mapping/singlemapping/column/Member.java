@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,8 +35,11 @@ public class Member {
     private LocalDateTime modifiedAt = LocalDateTime.now();
 
     // (4)
-    @Transient
-    private String age;
+    /*@Transient
+    private String age;*/
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Member(String email) {
         this.email = email;
@@ -44,5 +49,9 @@ public class Member {
         this.email = email;
         this.name = name;
         this.phone = phone;
+    }
+
+    public void addOrder(Order order){
+        orders.add(order);
     }
 }

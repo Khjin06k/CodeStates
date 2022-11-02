@@ -26,6 +26,7 @@ public class JpaBasicConfig {
 //            testEmailNotNull();
 //            testEmailUpdatable();
 //            testEmailUnique();
+            mappingManyToOneUniDirection();
         };
     }
 
@@ -51,7 +52,7 @@ public class JpaBasicConfig {
         System.out.println(resultMember2 == null);
     }*/
 
-    private void testEmailNotNull() {
+    /*private void testEmailNotNull() {
         tx.begin();
         em.persist(new Member());
         tx.commit();
@@ -70,5 +71,29 @@ public class JpaBasicConfig {
         em.persist(new Member("hgd@gmail.com"));
         em.persist(new Member("hgd@gmail.com"));
         tx.commit();
+    }*/
+
+    private void mappingManyToOneUniDirection(){
+        tx.begin();
+        Member member = new Member("hgd@gmail.com", "Hong Gil Dong", "010-1111-1111");
+
+        Order order = new Order();
+
+        member.addOrder(order);
+        order.addMember(member);
+
+        em.persist(member);
+        em.persist(order);
+
+        tx.commit();
+
+        Member findMember = em.find(Member.class, 1L);
+
+        findMember.getOrders().stream()
+                .forEach(findOrder -> {
+                    System.out.println("findOrder: " +
+                            findOrder.getMember().getMemberId() + ", " +
+                            findOrder.getMember().getEmail());
+                });
     }
 }
