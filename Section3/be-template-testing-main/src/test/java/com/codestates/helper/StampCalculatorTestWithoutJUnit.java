@@ -1,5 +1,6 @@
 package com.codestates.helper;
 
+import com.codestates.helper.StampCalculator;
 import com.codestates.order.entity.Order;
 import com.codestates.order.entity.OrderCoffee;
 
