@@ -1,0 +1,26 @@
+package com.soloproject_codestates.To_Do_App_soloproject.entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int taskId;
+
+    @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false, unique = true)
+    private int order;
+
+    @Column(nullable = false)
+    private boolean completed;
+}
