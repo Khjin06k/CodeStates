@@ -4,7 +4,7 @@ import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksPatchDto;
 import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksPostDto;
 import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksResponseDto;
 import org.mapstruct.Mapper;
-import org.springframework.scheduling.config.Task;
+import com.soloproject_codestates.To_Do_App_soloproject.entity.Task;
 
 @Mapper(componentModel = "spring")
 public interface TaskMapper {
