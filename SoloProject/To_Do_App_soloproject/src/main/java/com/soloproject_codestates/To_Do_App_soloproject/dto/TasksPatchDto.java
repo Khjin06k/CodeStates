@@ -3,6 +3,8 @@ package com.soloproject_codestates.To_Do_App_soloproject.dto;
 import com.soloproject_codestates.To_Do_App_soloproject.validator.NotSpace;
 import lombok.Getter;
 
+import javax.validation.constraints.Positive;
+
 @Getter
 public class TasksPatchDto {
     private int taskId;
@@ -10,7 +12,9 @@ public class TasksPatchDto {
     @NotSpace(message = "할 일은 공백이 아니어야 합니다")
     private String title;
 
-    private int order;
+    @NotSpace(message = "할 일에 대한 번호는 공백이 아니어야 합니다")
+    @Positive
+    private int todoOrder;
 
     private boolean completed;
 

@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/v1/tatks")
+@RequestMapping("/v1/tasks")
 @Valid
 public class TasksController {
     private final TasksService tasksService;

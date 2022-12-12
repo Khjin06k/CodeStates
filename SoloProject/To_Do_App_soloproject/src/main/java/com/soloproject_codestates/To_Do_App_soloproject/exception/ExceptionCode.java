@@ -3,7 +3,7 @@ package com.soloproject_codestates.To_Do_App_soloproject.exception;
 import lombok.Getter;
 
 public enum ExceptionCode {
-    TASK_EXISTS(409, "Task Excist"),
+    TASK_EXISTS(409, "Task Exist"),
     TASK_NOT_EXISTS(404, "Task Not Found");
 
     @Getter

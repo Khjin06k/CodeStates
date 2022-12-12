@@ -21,7 +21,7 @@ public class TasksService {
     }
 
     public Task createTask(Task task){
-        verifyExistOrder(task.getOrder());
+        verifyExistOrder(task.getTodoOrder());
         return taskRepository.save(task);
     }
 
@@ -30,8 +30,10 @@ public class TasksService {
 
         Optional.ofNullable(task.getTitle())
                 .ifPresent(title->findTask.setTitle(title));
-        Optional.ofNullable(task.getOrder())
-                .ifPresent(order -> findTask.setOrder(order));
+        Optional.ofNullable(task.getTodoOrder())
+                .ifPresent(todoOrder -> findTask.setTodoOrder(todoOrder));
+        Optional.ofNullable(task.isCompleted())
+                .ifPresent(completed -> findTask.setCompleted(completed));
 
         return taskRepository.save(findTask);
     }
@@ -53,14 +55,14 @@ public class TasksService {
         taskRepository.deleteAll();
     }
 
-    private void verifyExistOrder(int order) {
-        Optional<Task> task = taskRepository.findByOrder(order);
+    private void verifyExistOrder(int todoOrder) {
+        Optional<Task> task = taskRepository.findByTodoOrder(todoOrder);
         if(task.isPresent())
             throw new BusinessLogicException(ExceptionCode.TASK_EXISTS);
     }
 
     private Task findVerifiedTask(int taskId) {
-        Optional<Task> optionalTask = taskRepository.findById(taskId);
+        Optional<Task> optionalTask = taskRepository.findByTaskId(taskId);
 
         Task findTask = optionalTask.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.TASK_NOT_EXISTS));

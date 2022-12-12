@@ -6,6 +6,6 @@ import lombok.Getter;
 public class TasksResponseDto {
     private int taskId;
     private String title;
-    private int order;
+    private int todoOrder;
     private boolean completed;
 }
