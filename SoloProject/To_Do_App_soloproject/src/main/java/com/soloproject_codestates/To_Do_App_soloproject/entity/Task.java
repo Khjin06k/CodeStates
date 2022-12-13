@@ -18,7 +18,7 @@ public class Task {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private int todoOrder;
 
     @Column(nullable = false)

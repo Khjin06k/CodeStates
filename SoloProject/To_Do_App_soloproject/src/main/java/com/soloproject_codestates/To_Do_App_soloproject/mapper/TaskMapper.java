@@ -10,5 +10,5 @@ import com.soloproject_codestates.To_Do_App_soloproject.entity.Task;
 public interface TaskMapper {
     Task tasksPostDtoToTask(TasksPostDto tasksPostDto);
     Task taskPatchDtoToTask(TasksPatchDto tasksPatchDto);
-    TasksResponseDto taskToTaskResponseDto(Task task);
+    TasksResponseDto taskToTasksResponseDto(Task task);
 }

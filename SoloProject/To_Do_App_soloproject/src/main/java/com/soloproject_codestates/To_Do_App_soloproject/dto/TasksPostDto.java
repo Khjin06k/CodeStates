@@ -6,10 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 public class TasksPostDto {
 
-    @NotSpace(message = "할 일은 공백이 아니어야 합니다")
+    @NotSpace
     private String title;
 
     private int todoOrder;

@@ -5,6 +5,7 @@ import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksPatchDto;
 import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksPostDto;
 import com.soloproject_codestates.To_Do_App_soloproject.dto.TasksResponseDto;
 import com.soloproject_codestates.To_Do_App_soloproject.mapper.TaskMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/v1/tasks")
 @Valid
+@Slf4j
 public class TasksController {
     private final TasksService tasksService;
     private final TaskMapper mapper;
@@ -34,34 +36,35 @@ public class TasksController {
 
         Task response = tasksService.createTask(task);
 
-       return new ResponseEntity<>(mapper.taskToTaskResponseDto(response), HttpStatus.CREATED);
+       return new ResponseEntity<>(mapper.taskToTasksResponseDto(response), HttpStatus.CREATED);
     }
 
+    //현재 patch 진행이 안됨 >> post를 진행했을 때 id, title, order이 모두 0&null 값이므로 post의 문제일 수 있음
     @PatchMapping("/{task-id}")
     public ResponseEntity patchTask(@PathVariable("task-id") @Valid int taskId,
                                     @RequestBody @Valid TasksPatchDto tasksPatchDto){
         Task task = mapper.taskPatchDtoToTask(tasksPatchDto);
         Task response = tasksService.updateTask(task);
 
-        return new ResponseEntity<>(mapper.taskToTaskResponseDto(response), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.taskToTasksResponseDto(response), HttpStatus.OK);
     }
 
     @GetMapping("/{task-id}")
     public ResponseEntity getTask(@PathVariable("task-id") @Valid int taskId){
         Task response = tasksService.findTask(taskId);
 
-        return new ResponseEntity<>(mapper.taskToTaskResponseDto(response), HttpStatus.OK);
+        return new ResponseEntity<>(mapper.taskToTasksResponseDto(response), HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity getTasks(@Positive @RequestParam int page,
                                    @Positive @RequestParam int size){
-        Page<Task> pageOrders = tasksService.findTasks(page-1, size);
+        Page<Task> pageOrders = tasksService.findTasks(page, size);
         List<Task> tasks = pageOrders.getContent();
 
         List<TasksResponseDto> response =
                 tasks.stream()
-                        .map(task -> mapper.taskToTaskResponseDto(task))
+                        .map(task -> mapper.taskToTasksResponseDto(task))
                         .collect(Collectors.toList());
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
