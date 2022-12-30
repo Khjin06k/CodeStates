@@ -1,10 +1,14 @@
 package com.soloproject_codestates.To_Do_App_soloproject.dto;
 
 import com.soloproject_codestates.To_Do_App_soloproject.validator.NotSpace;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.Positive;
 
+@AllArgsConstructor
+@Setter
 @Getter
 public class TasksPatchDto {
     private int taskId;
